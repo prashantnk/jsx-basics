@@ -1,17 +1,36 @@
+// ctrl + ` for hide or show terminal
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const getButtonStyle = () => {
+    const style = { backgroundColor: 'grey', color: 'white', display: 'block' };
+    // js object
+    return style;
+}
+function getCurrentTime() {
+    return new Date().toLocaleTimeString();
+}
+const App = () => {
+    const labelText = 'Enter Name :';
+    const buttonText = { text: 'Click me !' };
+    return (
+        <div style={{ display: 'flex', width: '100%', justifyContent: 'center' }} >
+            <div >
+                <div>
+                    Current Time : {getCurrentTime()}
+                </div>
+                <label htmlFor="name" className="label" >
+                    {labelText}
+                </label>
+                <input id="name" />
+                <button style={getButtonStyle()}>
+                    {buttonText.text}
+                </button>
+            </div>
+        </div>
+    );
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
